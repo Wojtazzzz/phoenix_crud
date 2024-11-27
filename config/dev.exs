@@ -2,11 +2,12 @@ import Config
 
 # Configure your database
 config :phoenix_crud, PhoenixCrud.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "phoenix_crud_dev",
+  username: System.get_env("POSTGRES_USERNAME", "phoenix_crud"),
+  password: System.get_env("POSTGRES_PASSWORD", "postgres"),
+  hostname: System.get_env("POSTGRES_HOSTNAME", "localhost"),
+  database: System.get_env("POSTGRES_DATABASE", "phoenix_crud"),
   stacktrace: true,
+  port: System.get_env("POSTGRES_PORT", "5435"),
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
