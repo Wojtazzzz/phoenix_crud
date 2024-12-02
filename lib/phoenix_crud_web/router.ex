@@ -17,7 +17,9 @@ defmodule PhoenixCrudWeb.Router do
   scope "/", PhoenixCrudWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    get "/users", UserController, :index
+    get "/users/new", UserController, :new
+    post "/users/create", UserController, :create
   end
 
   # Other scopes may use custom stacks.
