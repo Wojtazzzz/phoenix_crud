@@ -9,7 +9,8 @@ module.exports = {
   content: [
     "./js/**/*.js",
     "../lib/phoenix_crud_web.ex",
-    "../lib/phoenix_crud_web/**/*.*ex"
+    "../lib/phoenix_crud_web/**/*.*ex",
+    "../lib/phoenix_crud_web/**/*.html.heex",
   ],
   theme: {
     extend: {
