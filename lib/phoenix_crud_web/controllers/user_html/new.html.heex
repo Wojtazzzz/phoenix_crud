@@ -15,7 +15,7 @@
     </div>
   <% end %>
 
-  <form action="/users/create" method="post" class="mt-8 mx-auto">
+  <form action="/users" method="post" class="mt-8 mx-auto">
       <input type="hidden" name="_csrf_token" value={get_csrf_token()} />
       <div class="mb-5">
           <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Your Name</label>

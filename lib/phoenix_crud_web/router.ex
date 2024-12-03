@@ -19,7 +19,7 @@ defmodule PhoenixCrudWeb.Router do
 
     get "/users", UserController, :index
     get "/users/new", UserController, :new
-    post "/users/create", UserController, :create
+    post "/users", UserController, :create
     delete "/users/:id", UserController, :delete
   end
 
