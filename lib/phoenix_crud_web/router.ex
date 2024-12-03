@@ -17,12 +17,13 @@ defmodule PhoenixCrudWeb.Router do
   scope "/", PhoenixCrudWeb do
     pipe_through :browser
 
-    get "/users", UserController, :index
-    get "/users/new", UserController, :new
-    post "/users", UserController, :create
-    get "/users/:id/edit", UserController, :edit
-    patch "/users/:id", UserController, :update
-    delete "/users/:id", UserController, :delete
+    resources "users", UserController, except: [:show]
+    # get "/users", UserController, :index
+    # get "/users/new", UserController, :new
+    # post "/users", UserController, :create
+    # get "/users/:id/edit", UserController, :edit
+    # patch "/users/:id", UserController, :update
+    # delete "/users/:id", UserController, :delete
   end
 
   # Other scopes may use custom stacks.
