@@ -16,7 +16,7 @@ defmodule PhoenixCrudWeb.UserController do
   end
 
   def create(conn, %{"user" => user_params}) do
-    case UserService.create_user(user_params) do
+    case UserService.create(user_params) do
       {:ok, _user} ->
         conn
         |> put_flash(:info, "User created successfully!")
@@ -40,7 +40,7 @@ defmodule PhoenixCrudWeb.UserController do
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do
-    case UserService.update_user(String.to_integer(id), user_params) do
+    case UserService.update(String.to_integer(id), user_params) do
       {:ok, _user} ->
         conn
         |> put_flash(:info, "User updated successfully!")
@@ -57,7 +57,7 @@ defmodule PhoenixCrudWeb.UserController do
   end
 
   def delete(conn, %{"id" => id}) do
-    case UserService.delete_user(String.to_integer(id)) do
+    case UserService.delete(String.to_integer(id)) do
       {:ok, _user} ->
         conn
         |> put_flash(:info, "User deleted successfully!")
