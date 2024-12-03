@@ -20,6 +20,7 @@ defmodule PhoenixCrudWeb.Router do
     get "/users", UserController, :index
     get "/users/new", UserController, :new
     post "/users/create", UserController, :create
+    delete "/users/:id", UserController, :delete
   end
 
   # Other scopes may use custom stacks.

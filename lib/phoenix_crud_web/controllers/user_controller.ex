@@ -25,4 +25,17 @@ defmodule PhoenixCrudWeb.UserController do
         render(conn, :new, errors: changeset.errors)
     end
   end
+
+  def delete(conn, %{"id" => id}) do
+    case UserService.delete_user(String.to_integer(id)) do
+      {:ok, _user} ->
+        conn
+        |> put_flash(:info, "User deleted successfully!")
+        |> redirect(to: "/users/")
+      {:error, _reason} ->
+        conn
+          |> put_flash(:error, "User not deleted successfully!")
+          |> redirect(to: "/users/")
+    end
+  end
 end
