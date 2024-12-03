@@ -8,14 +8,27 @@ defmodule PhoenixCrud.Services.UserService do
       |> Repo.insert()
   end
 
+  def update_user(id, attrs \\ %{}) do
+    case Repo.get(User, id) do
+      nil ->
+        {:error, :not_found}
+      user ->
+        user
+          |> User.changeset(attrs)
+          |> Repo.update()
+    end
+  end
+
   def delete_user(id) do
-    User
-    |> Repo.get(id)
-    |> case do
+    case Repo.get(User, id) do
       nil ->
         {:error, :not_found}
       user ->
         Repo.delete(user)
     end
+  end
+
+  def get_by_id(id) do
+    Repo.get(User, id)
   end
 end
