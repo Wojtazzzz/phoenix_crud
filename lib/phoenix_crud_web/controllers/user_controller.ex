@@ -12,7 +12,7 @@ defmodule PhoenixCrudWeb.UserController do
   end
 
   def new(conn, _params) do
-    render(conn, :new);
+    render(conn, :new, errors: Map.new());
   end
 
   def create(conn, %{"user" => user_params}) do
@@ -22,7 +22,7 @@ defmodule PhoenixCrudWeb.UserController do
         |> put_flash(:info, "User created successfully!")
         |> redirect(to: "/users/")
       {:error, changeset} ->
-        render(conn, :new, changeset: changeset)
+        render(conn, :new, errors: changeset.errors)
     end
   end
 end
