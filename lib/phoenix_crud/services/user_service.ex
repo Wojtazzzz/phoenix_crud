@@ -1,21 +1,22 @@
 defmodule PhoenixCrud.Services.UserService do
-  alias PhoenixCrud.User;
-  alias PhoenixCrud.Repo;
+  alias PhoenixCrud.User
+  alias PhoenixCrud.Repo
 
   def create_user(attrs \\ %{}) do
     %User{}
-      |> User.changeset(attrs)
-      |> Repo.insert()
+    |> User.changeset(attrs)
+    |> Repo.insert()
   end
 
   def update_user(id, attrs \\ %{}) do
     case Repo.get(User, id) do
       nil ->
         {:error, :not_found}
+
       user ->
         user
-          |> User.changeset(attrs)
-          |> Repo.update()
+        |> User.changeset(attrs)
+        |> Repo.update()
     end
   end
 
@@ -23,6 +24,7 @@ defmodule PhoenixCrud.Services.UserService do
     case Repo.get(User, id) do
       nil ->
         {:error, :not_found}
+
       user ->
         Repo.delete(user)
     end

@@ -1,6 +1,11 @@
 <div class="px-3">
   <div class="my-4">
-      <a href="/users" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Users list</a>
+    <a
+      href="/users"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+    >
+      Users list
+    </a>
   </div>
 
   <%= if @errors do %>
@@ -8,7 +13,7 @@
       <ul>
         <%= for {field, {message, _opts}} <- @errors do %>
           <li class="font-semibold text-red-600">
-              Field <%= field %>: <%= message %>.
+            Field <%= field %>: <%= message %>.
           </li>
         <% end %>
       </ul>
@@ -16,24 +21,59 @@
   <% end %>
 
   <form action={"/users/#{@user.id}"} method="post" class="mt-8 mx-auto">
-      <input type="hidden" name="_csrf_token" value={get_csrf_token()} />
-      <input type="hidden" name="_method" value="patch" />
-      <div class="mb-5">
-          <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Your Name</label>
-          <input type="text" id="name" name="user[name]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value={@user.name} placeholder="Name" />
-      </div>
-      <div class="mb-5">
-          <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your Email</label>
-          <input type="text" id="email" name="user[email]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value={@user.email} placeholder="Email" />
-      </div>
-      <div class="mb-5">
-          <label for="bio" class="block mb-2 text-sm font-medium text-gray-900">Your bio</label>
-          <input type="text" id="bio" name="user[bio]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value={@user.bio} placeholder="Bio" />
-      </div>
-      <div class="mb-5">
-          <label for="number_of_pets" class="block mb-2 text-sm font-medium text-gray-900">Your Number of pets</label>
-          <input type="text" id="number_of_pets" name="user[number_of_pets]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value={@user.number_of_pets} placeholder="Number of pets" />
-      </div>
-      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+    <input type="hidden" name="_csrf_token" value={get_csrf_token()} />
+    <input type="hidden" name="_method" value="patch" />
+    <div class="mb-5">
+      <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Your Name</label>
+      <input
+        type="text"
+        id="name"
+        name="user[name]"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        value={@user.name}
+        placeholder="Name"
+      />
+    </div>
+    <div class="mb-5">
+      <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your Email</label>
+      <input
+        type="text"
+        id="email"
+        name="user[email]"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        value={@user.email}
+        placeholder="Email"
+      />
+    </div>
+    <div class="mb-5">
+      <label for="bio" class="block mb-2 text-sm font-medium text-gray-900">Your bio</label>
+      <input
+        type="text"
+        id="bio"
+        name="user[bio]"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        value={@user.bio}
+        placeholder="Bio"
+      />
+    </div>
+    <div class="mb-5">
+      <label for="number_of_pets" class="block mb-2 text-sm font-medium text-gray-900">
+        Your Number of pets
+      </label>
+      <input
+        type="text"
+        id="number_of_pets"
+        name="user[number_of_pets]"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        value={@user.number_of_pets}
+        placeholder="Number of pets"
+      />
+    </div>
+    <button
+      type="submit"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    >
+      Submit
+    </button>
   </form>
 </div>
